@@ -1,0 +1,101 @@
+[2025-07-24 11:45:35] INFO: Server is running on port: 3000
+[2025-07-24 11:47:56] INFO: Server is running on port: 3000
+[2025-07-24 16:06:26] DEBUG: Access token not found, fetching new token.. 
+[2025-07-24 16:06:27] DEBUG: Access Token found: 1000.3e221df2cbf3ae0430ea8483d9eacf8d.28b5fc7dbb93cc044de50f9e3f5988d7
+[2025-07-24 16:06:27] INFO: Access Toke Found
+[2025-07-24 16:06:27] INFO: Contact Created: 976449000000430131
+[2025-07-24 16:06:27] INFO: Contact created. Email will be sent shortly
+[2025-07-24 16:06:32] DEBUG: Sending email to new contact after delay..
+[2025-07-24 16:06:33] INFO: Email sent Successfully
+[2025-07-24 16:30:39] DEBUG: Access Token found: 1000.3446a92562e29b7f032925ff053a07c7.e32f6232bbe09daedad3dbd59eed1279
+[2025-07-24 16:30:39] INFO: Access Toke Found
+[2025-07-24 16:30:39] DEBUG: Contact found: 976449000000430131
+[2025-07-24 16:30:39] INFO: Contact found. Email will be sent shortly
+[2025-07-24 16:30:43] INFO: Email sent Successfully
+[2025-07-24 16:30:54] DEBUG: Access Token found: 1000.ef57d36ca88842f65673d90e18f5f5f0.36ebdf02e8426d1c784bb18f1d434a06
+[2025-07-24 16:30:54] INFO: Access Toke Found
+[2025-07-24 16:30:54] INFO: Contact Created: 976449000000429086
+[2025-07-24 16:30:54] INFO: Contact created. Email will be sent shortly
+[2025-07-24 16:30:59] DEBUG: Sending email to new contact after delay..
+[2025-07-24 16:31:00] INFO: Email sent Successfully
+[2025-07-24 16:33:32] DEBUG: Access Token found: 1000.a8aaf04fa4607e35e7832ab1bf9c0a51.4ea836d205c9b5b862fed2bcb6905384
+[2025-07-24 16:33:32] INFO: Access Toke Found
+[2025-07-24 16:33:32] ERROR: FullName and workEmail are required
+[2025-07-24 16:38:36] INFO: Server is running on port: 3000
+[2025-07-24 16:38:55] INFO: Server is running on port: 3000
+[2025-07-24 16:39:19] DEBUG: Access token not found, fetching new token.. 
+[2025-07-24 16:39:20] DEBUG: Access Token found: 1000.f7a09da1ea319e2c97c9b0991e38141f.5c4eaadb7e1214310437b2432712a9e4
+[2025-07-24 16:39:20] INFO: Access Toke Found
+[2025-07-24 16:39:20] INFO: Contact Created: 976449000000430149
+[2025-07-24 16:39:20] INFO: Contact created. Email will be sent shortly
+[2025-07-24 16:39:25] DEBUG: Sending email to new contact after delay..
+[2025-07-24 16:39:26] INFO: Email sent Successfully
+[2025-07-24 16:52:44] INFO: Server is running on port: 3000
+[2025-07-24 16:52:50] DEBUG: Access token not found, fetching new token.. 
+[2025-07-24 16:52:50] DEBUG: Access Token found: 1000.7dea45e19257fd78b76dc2463a996f51.79cd5ad85fc9d588f40dd45dba0722d7
+[2025-07-24 16:52:50] INFO: Access Toke Found
+[2025-07-24 16:52:51] INFO: Contact Created: 976449000000430161
+[2025-07-24 16:52:51] INFO: Contact created. Email will be sent shortly
+[2025-07-24 16:52:56] DEBUG: Sending email to new contact after delay..
+[2025-07-24 16:52:56] INFO: Email sent Successfully
+[2025-07-24 16:53:09] INFO: Server is running on port: 3000
+[2025-07-24 16:54:16] DEBUG: Access token not found, fetching new token.. 
+[2025-07-24 16:54:16] DEBUG: Access Token found: 1000.69f600e46a12a475c377d6f3f300584e.afc104a7f4ea3e302d275ef7b6331e3d
+[2025-07-24 16:54:16] INFO: Access Toke Found
+[2025-07-24 16:54:16] INFO: Contact Created: 976449000000430168
+[2025-07-24 16:54:16] INFO: Contact created. Email will be sent shortly
+[2025-07-24 16:54:21] DEBUG: Sending email to new contact after delay..
+[2025-07-24 16:54:22] INFO: Email sent Successfully
+[2025-07-24 16:56:55] DEBUG: Access Token found: 1000.4613ac697dfdda955dc9e7b2b0a75e1d.ee61a111c5754b1ee5f1e86f4c20b731
+[2025-07-24 16:56:55] INFO: Access Toke Found
+[2025-07-24 16:56:55] INFO: Contact Created: 976449000000430185
+[2025-07-24 16:56:55] INFO: Contact created. Email will be sent shortly
+[2025-07-24 16:57:00] DEBUG: Sending email to new contact after delay..
+[2025-07-24 16:57:01] INFO: Email sent Successfully
+[2025-07-24 16:57:43] DEBUG: Access Token found: 1000.d8f2823bb8ef7338d5029d0de6f4ba8d.66b79c9842629d967c459fd2237601cf
+[2025-07-24 16:57:43] INFO: Access Toke Found
+[2025-07-24 16:57:43] ERROR: Error processing contact or sending email: [object Object]
+[2025-07-24 16:59:02] DEBUG: Access Token found: 1000.ddd3ec5a8a43bc1f283d30daeaee5e24.59bcfe4558f0c5b050f749d66bc77e56
+[2025-07-24 16:59:02] INFO: Access Toke Found
+[2025-07-24 16:59:03] INFO: Contact Created: 976449000000430202
+[2025-07-24 16:59:03] INFO: Contact created. Email will be sent shortly
+[2025-07-24 16:59:08] DEBUG: Sending email to new contact after delay..
+[2025-07-24 16:59:08] INFO: Email sent Successfully
+[2025-07-24 17:00:25] DEBUG: Access Token found: 1000.b79493917dae197e53fe02bf143219f6.844cbbd80ccbfa293e2e05d52d407af8
+[2025-07-24 17:00:25] INFO: Access Toke Found
+[2025-07-24 17:00:25] INFO: Contact Created: 976449000000429114
+[2025-07-24 17:00:25] INFO: Contact created. Email will be sent shortly
+[2025-07-24 17:00:30] DEBUG: Sending email to new contact after delay..
+[2025-07-24 17:00:31] INFO: Email sent Successfully
+[2025-07-24 17:02:34] INFO: Server is running on port: 3000
+[2025-07-24 17:02:49] DEBUG: Access token not found, fetching new token.. 
+[2025-07-24 17:02:49] DEBUG: Access Token found: 1000.244b13358b0e17504ff401dd4c555246.b15eaa981cccdef269b19e4fa4bcf93a
+[2025-07-24 17:02:49] INFO: Access Toke Found
+[2025-07-24 17:02:50] INFO: Contact Created: 976449000000429136
+[2025-07-24 17:02:50] INFO: Contact created. Email will be sent shortly
+[2025-07-24 17:02:55] DEBUG: Sending email to new contact after delay..
+[2025-07-24 17:02:55] INFO: Email sent Successfully
+[2025-07-24 17:03:28] DEBUG: Access Token found: 1000.562e35c5cb0788ee19ae893e77ad353f.739bd1d9aba80ccc572402ed5ff08b94
+[2025-07-24 17:03:28] INFO: Access Toke Found
+[2025-07-24 17:03:28] INFO: Contact Created: 976449000000430214
+[2025-07-24 17:03:28] INFO: Contact created. Email will be sent shortly
+[2025-07-24 17:03:33] DEBUG: Sending email to new contact after delay..
+[2025-07-24 17:03:34] INFO: Email sent Successfully
+[2025-07-24 17:13:45] INFO: Server is running on port: 3000
+[2025-07-24 17:14:38] INFO: Server is running on port: 3000
+[2025-07-24 17:15:27] INFO: Server is running on port: 3000
+[2025-07-24 17:17:00] INFO: Server is running on port: 3000
+[2025-07-24 17:17:15] INFO: Server is running on port: 3000
+[2025-07-24 17:17:26] DEBUG: Access token not found, fetching new token.. 
+[2025-07-24 17:17:26] DEBUG: Access Token found: 1000.98ae2d91bf377d683eec301374d648b4.65aa6398fd41931dcb1f8ec664940884
+[2025-07-24 17:17:26] INFO: Access Toke Found
+[2025-07-24 17:17:26] INFO: Contact Created: 976449000000430234
+[2025-07-24 17:17:26] INFO: Contact created. Email will be sent shortly
+[2025-07-24 17:17:31] DEBUG: Sending email to new contact after delay..
+[2025-07-24 17:17:32] INFO: Email sent Successfully
+[2025-07-24 17:18:11] DEBUG: Access Token found: 1000.01a5019df5f1d006c6f440126d286c1e.bc029c6dbbb8611144ea73d0dc7c452c
+[2025-07-24 17:18:11] INFO: Access Toke Found
+[2025-07-24 17:18:12] INFO: Contact Created: 976449000000430246
+[2025-07-24 17:18:12] INFO: Contact created. Email will be sent shortly
+[2025-07-24 17:18:17] DEBUG: Sending email to new contact after delay..
+[2025-07-24 17:18:17] INFO: Email sent Successfully

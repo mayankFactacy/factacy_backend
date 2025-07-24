@@ -1,0 +1,148 @@
+const axios = require("axios");
+const { getAccessToken } = require("../utils/tokenManager");
+
+// Simple in-memory job queue
+const emailJobQueue = [];
+
+// Worker function to process email jobs
+async function emailWorker() {
+  while (true) {
+    if (emailJobQueue.length === 0) {
+      // No jobs — wait 2 seconds before checking again
+      await new Promise((r) => setTimeout(r, 2000));
+      continue;
+    }
+
+    const job = emailJobQueue.shift();
+
+    try {
+      console.log(`Processing email job for contact id ${job.recordId}`);
+      await sendEmailToContact(job.recordId, job.token, job.contact);
+      console.log("Email sent successfully.");
+    } catch (error) {
+      console.error("Failed to send email:", error.message);
+
+      // Retry: push the job back to queue with delay
+      // For demo: simple retry, production use better retry/backoff libs
+      setTimeout(() => emailJobQueue.push(job), 5000);
+      console.log("Email job re-queued for retry after 5s.");
+    }
+  }
+}
+
+// Start the worker in the background (don't block API)
+emailWorker().catch(console.error);
+
+async function sendEmailToContact(recordId, token, contact) {
+  const emailPayload = {
+    data: [
+      {
+        from: {
+          user_name: "mayankFactacy",
+          email: "mayankch955@gmail.com"
+        },
+        to: [
+          {
+            user_name: contact.Last_Name || "Contact",
+            email: contact.Email
+          }
+        ],
+        org_email: false,
+        subject: "Welcome from Our Company",
+        content: `<p>Dear ${contact.Last_Name || "User"},</p><p>Thanks for connecting with us!</p><p>Best regards,<br/>Corporate Team</p>`,
+        mail_format: "html"
+      }
+    ]
+  };
+
+  const url = `https://www.zohoapis.in/bigin/v2/Contacts/${recordId}/actions/send_mail`;
+  const headers = {
+    Authorization: `Zoho-oauthtoken ${token}`,
+    "Content-Type": "application/json"
+  };
+
+  const response = await axios.post(url, emailPayload, { headers });
+  return response.data;
+}
+
+async function searchOrCreateContact(req, res) {
+  const { Email, Last_Name, Mobile, Email_Opt_Out = false } = req.body;
+
+  if (!Email) {
+    return res.status(400).json({ error: "Email is required." });
+  }
+  if (!Last_Name) {
+    return res.status(400).json({ error: "Last_Name is required." });
+  }
+
+  try {
+    const token = await getAccessToken();
+
+    // Search contact
+    const searchResponse = await axios.get(
+      "https://www.zohoapis.in/bigin/v2/Contacts/search",
+      {
+        headers: { Authorization: `Zoho-oauthtoken ${token}` },
+        params: {
+          criteria: `(Email:equals:${Email})`,
+          fields: "Email,Last_Name,Mobile,Email_Opt_Out"
+        }
+      }
+    );
+
+    const contacts = searchResponse.data.data;
+    let contact;
+    let recordId;
+
+    if (contacts && contacts.length > 0) {
+      contact = contacts[0];
+      recordId = contact.id;
+      console.log(`Contact found: ${recordId}`);
+    } else {
+      // Create contact
+      const createPayload = {
+        data: [
+          {
+            Email,
+            Last_Name,
+            Mobile,
+            Email_Opt_Out
+          }
+        ]
+      };
+
+      const createResponse = await axios.post(
+        "https://www.zohoapis.in/bigin/v2/Contacts",
+        createPayload,
+        {
+          headers: {
+            Authorization: `Zoho-oauthtoken ${token}`,
+            "Content-Type": "application/json"
+          }
+        }
+      );
+
+      contact = createResponse.data.data;
+      recordId = contact.id;
+      console.log(`Contact created: ${recordId}`);
+    }
+
+    // Push email job to the queue (non-blocking)
+    emailJobQueue.push({ recordId, token, contact });
+    console.log(`Email job queued for contact id: ${recordId}`);
+
+    // Respond immediately without waiting for email to send
+    return res.status(200).json({
+      message: "Contact processed. Email will be sent shortly.",
+      contact
+    });
+  } catch (error) {
+    console.error("Error in searchOrCreateContact:", error.response?.data || error.message);
+    return res.status(500).json({
+      error: "Error processing contact",
+      details: error.response?.data || error.message
+    });
+  }
+}
+
+module.exports = { searchOrCreateContact };

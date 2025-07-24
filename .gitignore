@@ -1,0 +1,14 @@
+node_modules
+.env
+emailtest.js
+global-bundle.js
+dummy.js
+views
+auth.ejs
+serv.js
+login-test.yml
+users.csv
+cron-job
+
+a2d.js
+.clinic
