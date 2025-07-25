@@ -38,8 +38,8 @@ async function sendEmailToContact(recordId, token, contact) {
     data: [
       {
         from: {
-          user_name: "mayankFactacy",
-          email: "mayankch955@gmail.com"
+          user_name: "",
+          email: ".com"
         },
         to: [
           {
