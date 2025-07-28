@@ -9,46 +9,46 @@ dotenv.config({
     path:path.resolve(__dirname,'.env')
 });
 
-async function sendEmailToContact(recordId, token, contact) {
-  const emailPayload = {
-    data: [
-      {
-        from: {
-          user_name: config.user_name,
-          email: config.email,
-        },
-        to: [
-          {
-            user_name: contact.Last_Name || "User",
-            email: contact.Email,
-          },
-        ],
-        org_email: false,
-        subject: "Welcome!",
-        content: `<p>Hello ${contact.Last_Name},<br/>Welcome to our service.</p>`,
-        mail_format: "html",
-      },
-    ],
-  };
+// async function sendEmailToContact(recordId, token, contact) {
+//   const emailPayload = {
+//     data: [
+//       {
+//         from: {
+//           user_name: config.user_name,
+//           email: config.email,
+//         },
+//         to: [
+//           {
+//             user_name: contact.Last_Name || "User",
+//             email: contact.Email,
+//           },
+//         ],
+//         org_email: false,
+//         subject: "Welcome!",
+//         content: `<p>Hello ${contact.Last_Name},<br/>Welcome to our service.</p>`,
+//         mail_format: "html",
+//       },
+//     ],
+//   };
 
-  try {
-    const response = await axios.post(
-      `https://www.zohoapis.in/bigin/v2/Contacts/${recordId}/actions/send_mail`,
-      emailPayload,
-      {
-        headers: {
-          Authorization: `Zoho-oauthtoken ${token}`,
-          "Content-Type": "application/json",
-        },
-      }
-    );
+//   try {
+//     const response = await axios.post(
+//       `https://www.zohoapis.in/bigin/v2/Contacts/${recordId}/actions/send_mail`,
+//       emailPayload,
+//       {
+//         headers: {
+//           Authorization: `Zoho-oauthtoken ${token}`,
+//           "Content-Type": "application/json",
+//         },
+//       }
+//     );
 
-    logger.info("Email sent Successfully");
-    return response.data;
-  } catch (error) {
-    logger.error(`Failed to send email: ${error.response?.data || error.message}`);
-  }
-}
+//     logger.info("Email sent Successfully");
+//     return response.data;
+//   } catch (error) {
+//     logger.error(`Failed to send email: ${error.response?.data || error.message}`);
+//   }
+// }
 
 
 async function searchOrCreateContact(req, res) {
@@ -92,10 +92,10 @@ async function searchOrCreateContact(req, res) {
       const recordId = contact.id;
 
       logger.debug(`Contact found: ${recordId}`);
-      setTimeout(() => sendEmailToContact(recordId, token, contact), 3000);
-      logger.info("Contact found. Email will be sent shortly");
+      // setTimeout(() => sendEmailToContact(recordId, token, contact), 3000);
+      logger.info("Contact found.");
       return res.status(200).json({
-        message: "Contact found. Email will be sent shortly.",
+        message: "Contact found.",
         contact,
       });
     }
@@ -134,23 +134,23 @@ async function searchOrCreateContact(req, res) {
 
     logger.info(`Contact Created: ${recordId}`);
 
-    setTimeout(() => {
-      logger.debug("Sending email to new contact after delay..");
-      sendEmailToContact(recordId, token, {
-        Email: workEmail,
-        Last_Name: lastName,
-      });
-    }, 5000);
+    // setTimeout(() => {
+    //   logger.debug("Sending email to new contact after delay..");
+    //   sendEmailToContact(recordId, token, {
+    //     Email: workEmail,
+    //     Last_Name: lastName,
+    //   });
+    // }, 5000);
 
-    logger.info("Contact created. Email will be sent shortly");
+    logger.info("Contact created.");
     return res.status(201).json({
-      message: "Contact created. Email will be sent shortly.",
+      message: "Contact created.",
       contact: newContact,
     });
   } catch (error) {
-    logger.error(`Error processing contact or sending email: ${error.response?.data || error.message}`);
+    logger.error(`Error processing contact ${error.response?.data || error.message}`);
     return res.status(500).json({
-      error: "Error processing contact or sending email.",
+      error: "Error processing contact",
       details: error.response?.data || error.message,
     });
   }

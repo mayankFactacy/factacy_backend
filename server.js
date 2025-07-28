@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express()
-const port = 3000;
+const port = 5000;
 const cors = require('cors');
 const biginRoutes = require('./routes/biginRoutes');
 const logger = require('./logger')
@@ -19,7 +19,7 @@ app.use('/api/bigin', biginRoutes)
 
 
 app.get(`/`, (req, res) => {
-    res.send(`3000 ok`)
+    res.send(`${port} ok`)
 })
 
 app.listen(port, () => {
