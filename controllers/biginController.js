@@ -1,12 +1,12 @@
 const axios = require("axios");
 const { getAccessToken } = require("../utils/tokenManager");
 const logger = require("../logger");
-const dotenv= require('dotenv')
+const dotenv = require('dotenv')
 const path = require('path');
 const config = require("../config/zohoConfig")
 
 dotenv.config({
-    path:path.resolve(__dirname,'.env')
+  path: path.resolve(__dirname, '.env')
 });
 
 // async function sendEmailToContact(recordId, token, contact) {
@@ -62,7 +62,18 @@ async function searchOrCreateContact(req, res) {
     interest = [],
     requirement = "",
     urgency = "",
+    utmParams = {},
+
+    utm_ad_Id = "",
+    utm_adgroup = "",
+    utm_campaign = "",
+    utm_device = "",
+    utm_keyword = "",
+    utm_matchtype = "",
+    utm_medium = "",
+    utm_source = ""
   } = req.body;
+
 
   if (!workEmail || !fullName) {
     logger.error("FullName and workEmail are required");
@@ -100,6 +111,22 @@ async function searchOrCreateContact(req, res) {
       });
     }
 
+
+
+
+    const utmFields = {
+      UTM_Source: utmParams.utm_source || utm_source || "",
+      UTM_Medium: utmParams.utm_medium || utm_medium || "",
+      UTM_Matchtype: utmParams.utm_matchtype || utm_matchtype || "",
+      UTM_Campaign: utmParams.utm_campaign || utm_campaign || "",
+      UTM_Ad_Id: utmParams.utm_ad_Id || utm_ad_Id || "",
+      UTM_Adgroup: utmParams.utm_adgroup || utm_adgroup || "",
+      UTM_Device: utmParams.utm_device || utm_device || "",
+      UTM_Keyword: utmParams.utm_keyword || utm_keyword || ""
+
+    };
+
+
     const createPayload = {
       data: [
         {
@@ -114,9 +141,13 @@ async function searchOrCreateContact(req, res) {
           Tag: interest.map((tag) => ({ name: tag })),
           Description: `Requirement: ${requirement}\nUrgency: ${urgency}`,
           Email_Opt_Out: false,
+          ...utmFields
         },
       ],
     };
+        
+
+    console.log("Creating new contact with payload:", JSON.stringify(createPayload, null, 2));
 
     const createResponse = await axios.post(
       "https://www.zohoapis.in/bigin/v2/Contacts",
