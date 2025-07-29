@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express()
-const port = 8002;
+const port = 15001;
 const cors = require('cors');
 const biginRoutes = require('./routes/biginRoutes');
 const logger = require('./logger')
