@@ -1,15 +1,15 @@
 const express = require('express');
 const app = express()
-const port = 5000;
+const port = 15001;
 const cors = require('cors');
 const biginRoutes = require('./routes/biginRoutes');
 const logger = require('./logger')
 
 
 app.use(cors({
-    origin: ["https://factacy.ai", "http://localhost:3000","https://factacy.ai"],
+    origin: ["https://factacy.ai", "http://localhost:3000","https://www.factacy.ai/"],
     methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
+   // credentials: true,
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -18,8 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/bigin', biginRoutes)
 
 
-app.get(`/`, (req, res) => {
-    res.send(`${port} ok`)
+app.get(`/api`, (req, res) => {
+    res.send(`3000 ok`)
 })
 
 app.listen(port, () => {
