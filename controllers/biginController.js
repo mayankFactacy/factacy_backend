@@ -82,7 +82,7 @@ async function searchOrCreateContact(req, res) {
   const [firstName, ...lastNameParts] = fullName.trim().split(" ");
   const lastName = lastNameParts.join(" ") || "-";
 
-  const token = await getAccessToken();
+  let token = await getAccessToken();
 
   try {
     const searchResponse = await axios.get(
@@ -148,7 +148,7 @@ async function searchOrCreateContact(req, res) {
         
 
     //console.log("Creating new contact with payload:", JSON.stringify(createPayload, null, 2));
-
+    token = await getAccessToken()
     const createResponse = await axios.post(
       "https://www.zohoapis.in/bigin/v2/Contacts",
       createPayload,
